@@ -16,6 +16,8 @@ jobs:
           script: |
             console.log(`hello world`)
 
+            github-token: ${{ secrets.GH_TOKEN }}
+
             const owner = context.repo.owner
             const repo = context.repo.repo
             const branch = "main"
