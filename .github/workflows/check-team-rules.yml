@@ -38,3 +38,4 @@ jobs:
               console.log(`Rules:`)
               console.log(JSON.stringify(rules))
             }
+            
