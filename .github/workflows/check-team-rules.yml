@@ -37,7 +37,7 @@ jobs:
               console.log(`No branch protection rules available`)
             }
 
-            if (rules) {
+            if (rules !== null) {
               console.log(`Rules2:`)
               console.log(JSON.stringify(rules))
             }
