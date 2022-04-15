@@ -21,11 +21,20 @@ jobs:
             const repo = context.repo.repo
             const branch = "main"
 
-            const rules = await github.rest.repos.getBranchProtection({
-              owner,
-              repo,
-              branch,
-            });
+            let rules
+            try 
+            {
+              const rules = await github.rest.repos.getBranchProtection({
+                owner,
+                repo,
+                branch,
+              });
+            }
+            catch {
+              console.log(`No branch protection rules available`)
+            }
 
-            console.log(`Rules:`)
-            console.log(JSON.stringify(rules))
+            if (rules) {
+              console.log(`Rules:`)
+              console.log(JSON.stringify(rules))
+            }
