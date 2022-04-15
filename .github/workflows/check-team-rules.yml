@@ -24,7 +24,7 @@ jobs:
             let rules
             try 
             {
-              const rules = await github.rest.repos.getBranchProtection({
+              rules = await github.rest.repos.getBranchProtection({
                 owner,
                 repo,
                 branch,
