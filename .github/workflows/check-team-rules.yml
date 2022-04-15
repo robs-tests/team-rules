@@ -15,3 +15,16 @@ jobs:
         with:
           script: |
             console.log(`hello world`)
+
+            const owner = context.repo.owner
+            const repo = context.repo.repo
+            const branch = "main"
+
+            const rules = await github.rest.repos.getBranchProtection({
+              owner,
+              repo,
+              branch,
+            });
+
+            console.log(`Rules:`)
+            console.log(JSON.stringify(rules))
