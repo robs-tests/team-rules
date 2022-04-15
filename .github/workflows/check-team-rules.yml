@@ -1,0 +1,17 @@
+name: Check team rules
+
+on:
+  push:
+    paths:
+      - .github/workflows/check-team-rules.yml
+      
+  workflow_dispatch:
+      
+jobs:
+  check-code-owners:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            console.log(`hello world`)
