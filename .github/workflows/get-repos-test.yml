@@ -22,14 +22,17 @@ jobs:
       with: 
         github-token: ${{ secrets.GH_TOKEN }}
         org: devops-actions
+        topic-filter: github-actions
       id: get-org-repos      
     outputs:
       repos: ${{ steps.get-org-repos.outputs.repos }}
       
   print:
     runs-on: ubuntu-latest
-    needs: get-org-repos
+    needs: [get-org-repos, get-org-repos-with-filter]
     steps:
       - env: 
           repo: ${{ needs.get-org-repos.outputs.repos }}
-        run: echo "Hello $repo!"
+          repo-filtered: ${{ needs.get-org-repos-with-filter.outputs.repos }}
+        run: |
+          echo "Found these repos with filtering: $repo!"
