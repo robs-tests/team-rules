@@ -21,4 +21,4 @@ jobs:
     steps:
       - env: 
           repo: ${{ fromJson(needs.get-org-repos.outputs.repos) }}
-        run: echo "Hello ${{ repo }}!"        
+        run: echo "Hello $repo!"
