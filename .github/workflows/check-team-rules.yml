@@ -29,16 +29,17 @@ jobs:
                 repo,
                 branch,
               });
-              
-              console.log(`Rules:`)
-              console.log(JSON.stringify(rules))
             }
             catch {
               console.log(`No branch protection rules available`)
             }
 
             if (rules) {
-              console.log(`Rules2:`)
+              console.log(`Rules:`)
               console.log(JSON.stringify(rules))
+
+              foreach (rule in rules) {
+                // check if rule has the correct settings:
+              }
             }
 
