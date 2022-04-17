@@ -33,7 +33,7 @@ jobs:
     steps:
       - env: 
           repos: ${{ needs.get-org-repos.outputs.repos }}
-          repos-filtered: ${{ needs.get-org-repos-with-filter.outputs.repos }}
+          reposFiltered: ${{ needs.get-org-repos-with-filter.outputs.repos }}
         run: |
           echo "Found these repos without filtering: $repos!"
-          echo "Found these repos with filtering: $repos-filtered!"
+          echo "Found these repos with filtering: $reposFiltered!"
