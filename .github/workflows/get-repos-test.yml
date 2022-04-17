@@ -1,0 +1,25 @@
+on: 
+  push:
+    paths:
+     - .github/workflows/get-repos-test.yml
+     
+jobs:
+  get-org-repos:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: rajbos/get-org-repos-fork@main
+      with: 
+        github-token: ${{ secrets.GH_TOKEN }}
+        org: devops-actions
+      id: get-org-repos      
+    outputs:
+      repos: ${{ steps.get-org-repos.outputs.repos }}
+      
+   print:
+    runs-on: ubuntu-latest
+    needs: get-org-repos
+    steps:
+      - run: echo "Hello ${{ repo }}!"
+        with: 
+          repo: ${{ fromJson(needs.get-org-repos.outputs.repos) }}
+        
